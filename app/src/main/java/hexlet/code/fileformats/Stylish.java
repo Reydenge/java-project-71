@@ -1,9 +1,7 @@
 package hexlet.code.fileformats;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
-import java.util.SimpleTimeZone;
 
 public class Stylish {
     public static String stylishFormat(Map<String, Map<String, Object>> fileDifference) throws IOException {
