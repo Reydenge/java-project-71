@@ -1,9 +1,13 @@
 package hexlet.code;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.TreeMap;
 
 public class DiffDetector {
-    public static Map<String, Map<String, Object>> fileDifference(Map<String, Object> firstMap, Map<String, Object> secondMap) {
+    public static Map<String, Map<String, Object>> fileDifference(
+            Map<String, Object> firstMap, Map<String, Object> secondMap) {
         Map<String, Map<String, Object>> fileDifference = new TreeMap<>();
         Set<String> keysSet = new TreeSet<>(firstMap.keySet());
         keysSet.addAll(secondMap.keySet());
