@@ -1,9 +1,10 @@
 package hexlet.code;
 
-import hexlet.code.fileformats.*;
+import hexlet.code.fileformats.Json;
+import hexlet.code.fileformats.Stylish;
+import hexlet.code.fileformats.Plain;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 public class Formatter {
