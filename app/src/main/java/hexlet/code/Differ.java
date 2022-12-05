@@ -3,9 +3,6 @@ package hexlet.code;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Map;
 
 public class Differ {
@@ -26,8 +23,8 @@ public class Differ {
         return Parser.parse(fileData, fileFormat);
     }
 
-    private static String getFileFormat(File file){
-        if(!file.getPath().contains(".")) {
+    private static String getFileFormat(File file) {
+        if (!file.getPath().contains(".")) {
             return "";
         }
         int indexOfLastDot = file.getPath().indexOf(".") + 1;
