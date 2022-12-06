@@ -26,6 +26,7 @@ public class Stylish {
                         .append(fileDifference.get(mapEntry.getKey()).get("oldValue")).append("\n");
             }
         }
-        return sb.append("}").toString();
+        sb.append("}");
+        return sb.toString();
     }
 }
