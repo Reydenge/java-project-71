@@ -1,0 +1,10 @@
+{
+  "checked": false,
+  "default": null,
+  "id": null,
+  "key1": "value1",
+  "numbers2": [1, 2, 3],
+  "setting1": "Some value",
+  "setting2": 200,
+  "setting3": true
+}
