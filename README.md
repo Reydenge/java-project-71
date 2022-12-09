@@ -3,7 +3,7 @@
 
 Compare of two configuration files and show a difference.
 
-[Demonstration](https://asciinema.org/a/542718)
+[Demonstration](https://asciinema.org/a/544392)
 
 ## Start
 
