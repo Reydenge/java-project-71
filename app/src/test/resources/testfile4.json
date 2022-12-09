@@ -1,0 +1,14 @@
+{
+  "checked": true,
+  "default": [1],
+  "id": null,
+  "key2": "value2",
+  "numbers2": [1, 2],
+  "setting1": "Another value",
+  "setting2": 300,
+  "setting3": "none",
+  "obj1": {
+  "nestedKey": "value",
+  "isNested": true
+}
+}
