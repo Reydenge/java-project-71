@@ -13,6 +13,8 @@ public class DiffBuilder {
         keysSet.addAll(secondMap.keySet());
         for (String key : keysSet) {
             Map<String, Object> tempMap = new TreeMap<>();
+            String oldValue = firstMap.get(key) == null ? "null" : firstMap.get(key).toString();
+            String newValue = secondMap.get(key) == null ? "null" : secondMap.get(key).toString();
             if (!firstMap.containsKey(key)) {
                 tempMap.put("type", "added");
                 tempMap.put("oldValue", "null");
@@ -22,16 +24,14 @@ public class DiffBuilder {
                 tempMap.put("oldValue", firstMap.get(key));
                 tempMap.put("newValue", "null");
             } else {
-                var oldValue = firstMap.get(key) == null ? "null" : firstMap.get(key);
-                var newValue = secondMap.get(key) == null ? "null" : secondMap.get(key);
                 if (oldValue.equals(newValue)) {
                     tempMap.put("type", "unchanged");
-                    tempMap.put("oldValue", oldValue);
-                    tempMap.put("newValue", newValue);
+                    tempMap.put("oldValue", firstMap.get(key));
+                    tempMap.put("newValue", secondMap.get(key));
                 } else {
                     tempMap.put("type", "changed");
-                    tempMap.put("oldValue", oldValue);
-                    tempMap.put("newValue", newValue);
+                    tempMap.put("oldValue", firstMap.get(key));
+                    tempMap.put("newValue", secondMap.get(key));
                 }
             }
             fileDifference.put(key, tempMap);
