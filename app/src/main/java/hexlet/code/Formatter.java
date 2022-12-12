@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Formatter {
-    public static String compile(Map<String, Map<String, Object>> filesDifference, String format) throws IOException {
+    public static String format(Map<String, Map<String, Object>> filesDifference, String format) throws IOException {
         switch (format) {
             case "json" -> {
                 return Json.jsonFormat(filesDifference);
