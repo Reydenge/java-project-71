@@ -6,15 +6,13 @@ import java.util.TreeSet;
 import java.util.TreeMap;
 
 public class DiffBuilder {
-    public static Map<String, Map<String, Object>> fileDifference(
+    public static Map<String, Map<String, Object>> getDifference(
             Map<String, Object> firstMap, Map<String, Object> secondMap) {
         Map<String, Map<String, Object>> fileDifference = new TreeMap<>();
         Set<String> keysSet = new TreeSet<>(firstMap.keySet());
         keysSet.addAll(secondMap.keySet());
         for (String key : keysSet) {
             Map<String, Object> tempMap = new TreeMap<>();
-            String oldValue = firstMap.get(key) == null ? "null" : firstMap.get(key).toString();
-            String newValue = secondMap.get(key) == null ? "null" : secondMap.get(key).toString();
             if (!firstMap.containsKey(key)) {
                 tempMap.put("type", "added");
                 tempMap.put("oldValue", "null");
@@ -24,18 +22,19 @@ public class DiffBuilder {
                 tempMap.put("oldValue", firstMap.get(key));
                 tempMap.put("newValue", "null");
             } else {
-                if (oldValue.equals(newValue)) {
+                if (isEqual(firstMap.get(key), secondMap.get(key))) {
                     tempMap.put("type", "unchanged");
-                    tempMap.put("oldValue", firstMap.get(key));
-                    tempMap.put("newValue", secondMap.get(key));
                 } else {
                     tempMap.put("type", "changed");
-                    tempMap.put("oldValue", firstMap.get(key));
-                    tempMap.put("newValue", secondMap.get(key));
                 }
+                tempMap.put("oldValue", firstMap.get(key));
+                tempMap.put("newValue", secondMap.get(key));
             }
             fileDifference.put(key, tempMap);
         }
         return fileDifference;
+    }
+    private static boolean isEqual(Object firstValue, Object secondValue) {
+        return (firstValue != null && secondValue != null) && firstValue.equals(secondValue);
     }
 }
