@@ -1,8 +1,8 @@
 package hexlet.code;
 
-import hexlet.code.fileformats.Json;
-import hexlet.code.fileformats.Stylish;
-import hexlet.code.fileformats.Plain;
+import hexlet.code.formats.Json;
+import hexlet.code.formats.Stylish;
+import hexlet.code.formats.Plain;
 
 import java.io.IOException;
 import java.util.Map;
