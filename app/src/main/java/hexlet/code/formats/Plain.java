@@ -11,12 +11,18 @@ public class Plain {
             var newValue = normalize(mapEntry.getValue().get("newValue"));
             var oldValue = normalize(mapEntry.getValue().get("oldValue"));
             switch (valueType) {
-                case "added" -> sb.append("Property '").append(mapEntry.getKey()).append("' was added with value: ")
+                case "added":
+                    sb.append("Property '").append(mapEntry.getKey()).append("' was added with value: ")
                         .append(newValue).append("\n");
-                case "removed" -> sb.append("Property '").append(mapEntry.getKey()).append("' was removed\n");
-                case "changed" -> sb.append("Property '").append(mapEntry.getKey()).append("' was updated. From ")
+                    break;
+                case "removed":
+                    sb.append("Property '").append(mapEntry.getKey()).append("' was removed\n");
+                    break;
+                case "changed":
+                    sb.append("Property '").append(mapEntry.getKey()).append("' was updated. From ")
                         .append(oldValue).append(" to ").append(newValue).append("\n");
-                default -> throw new RuntimeException();
+                    break;
+                default: throw new RuntimeException();
             }
         }
         sb.deleteCharAt(sb.lastIndexOf("\n"));
