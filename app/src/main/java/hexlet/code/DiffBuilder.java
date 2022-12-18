@@ -15,12 +15,12 @@ public class DiffBuilder {
             Map<String, Object> tempMap = new TreeMap<>();
             if (!firstMap.containsKey(key)) {
                 tempMap.put("type", "added");
-                tempMap.put("oldValue", "null");
+                tempMap.put("oldValue", null);
                 tempMap.put("newValue", secondMap.get(key));
             } else if (!secondMap.containsKey(key)) {
                 tempMap.put("type", "removed");
                 tempMap.put("oldValue", firstMap.get(key));
-                tempMap.put("newValue", "null");
+                tempMap.put("newValue", null);
             } else {
                 if (isEqual(firstMap.get(key), secondMap.get(key))) {
                     tempMap.put("type", "unchanged");
@@ -35,6 +35,10 @@ public class DiffBuilder {
         return fileDifference;
     }
     private static boolean isEqual(Object firstValue, Object secondValue) {
-        return (firstValue != null && secondValue != null) && firstValue.equals(secondValue);
+        if ((firstValue != null && secondValue != null) && firstValue.equals(secondValue)) {
+            return true;
+        } else {
+            return firstValue == null && secondValue == null;
+        }
     }
 }
