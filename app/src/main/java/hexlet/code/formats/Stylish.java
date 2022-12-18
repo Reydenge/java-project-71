@@ -18,7 +18,9 @@ public class Stylish {
                     sb.append("  + ").append(getValue(mapEntry, newValue));
                 }
                 case "unchanged" -> sb.append("    ").append(getValue(mapEntry, oldValue));
-                default -> throw new Exception();
+                default -> {
+                    return sb.toString();
+                }
             }
         }
         sb.append("}");
