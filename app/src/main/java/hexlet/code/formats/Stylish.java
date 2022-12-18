@@ -10,19 +10,17 @@ public class Stylish {
             String valueType = (String) mapEntry.getValue().get("type");
             Object oldValue = mapEntry.getValue().get("oldValue");
             Object newValue = mapEntry.getValue().get("newValue");
-            switch (valueType) {
-                case "added" -> sb.append("  + ").append(getValue(mapEntry, newValue));
-                case "removed" -> sb.append("  - ").append(getValue(mapEntry, oldValue));
-                case "changed" -> {
-                    sb.append("  - ").append(getValue(mapEntry, oldValue));
-                    sb.append("  + ").append(getValue(mapEntry, newValue));
-                }
-                case "unchanged" -> sb.append("    ").append(getValue(mapEntry, oldValue));
-                default -> {
-                    return sb.toString();
+                switch (valueType) {
+                    case "added" -> sb.append("  + ").append(getValue(mapEntry, newValue));
+                    case "removed" -> sb.append("  - ").append(getValue(mapEntry, oldValue));
+                    case "changed" -> {
+                        sb.append("  - ").append(getValue(mapEntry, oldValue));
+                        sb.append("  + ").append(getValue(mapEntry, newValue));
+                    }
+                    case "unchanged" -> sb.append("    ").append(getValue(mapEntry, oldValue));
+                    default -> throw new RuntimeException();
                 }
             }
-        }
         sb.append("}");
         return sb.toString();
     }
