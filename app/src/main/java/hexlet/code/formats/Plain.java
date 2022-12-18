@@ -16,9 +16,7 @@ public class Plain {
                 case "removed" -> sb.append("Property '").append(mapEntry.getKey()).append("' was removed\n");
                 case "changed" -> sb.append("Property '").append(mapEntry.getKey()).append("' was updated. From ")
                         .append(oldValue).append(" to ").append(newValue).append("\n");
-                default -> {
-                    return sb.toString();
-                }
+                default -> throw new RuntimeException();
             }
         }
         sb.deleteCharAt(sb.lastIndexOf("\n"));
