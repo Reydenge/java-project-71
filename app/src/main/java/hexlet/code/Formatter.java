@@ -4,11 +4,10 @@ import hexlet.code.formats.Json;
 import hexlet.code.formats.Stylish;
 import hexlet.code.formats.Plain;
 
-import java.io.IOException;
 import java.util.Map;
 
 public class Formatter {
-    public static String format(Map<String, Map<String, Object>> filesDifference, String format) throws IOException {
+    public static String format(Map<String, Map<String, Object>> filesDifference, String format) throws Exception {
         switch (format) {
             case "json" -> {
                 return Json.jsonFormat(filesDifference);
