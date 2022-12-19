@@ -16,17 +16,17 @@ public class Differ {
         return generate(firstFilePath, secondFilePath, "stylish");
     }
 
-    private static Map<String, Object> getData(String filepath) throws Exception {
-        String fileData = Files.readString(Paths.get(filepath));
-        String fileFormat = getFileFormat(filepath);
-        return Parser.parse(fileData, fileFormat);
+    private static Map<String, Object> getData(String path) throws Exception {
+        String content = Files.readString(Paths.get(path));
+        String extension = getExtension(path);
+        return Parser.parse(content, extension);
     }
 
-    private static String getFileFormat(String filepath) throws Exception {
-        if (!filepath.contains(".")) {
+    private static String getExtension(String path) throws Exception {
+        if (!path.contains(".")) {
             throw new DataFormatException();
         }
-        int indexOfLastDot = filepath.lastIndexOf(".") + 1;
-        return filepath.substring(indexOfLastDot).toLowerCase();
+        int indexOfLastDot = path.lastIndexOf(".") + 1;
+        return path.substring(indexOfLastDot).toLowerCase();
     }
 }
