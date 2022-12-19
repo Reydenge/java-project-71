@@ -25,7 +25,7 @@ public class Stylish {
                     sb.append("    ").append(getValue(mapEntry, oldValue));
                     break;
                 default:
-                    throw new RuntimeException();
+                    break;
             }
         }
         sb.append("}");
