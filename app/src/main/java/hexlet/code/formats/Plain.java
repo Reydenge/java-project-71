@@ -22,7 +22,8 @@ public class Plain {
                     sb.append("Property '").append(mapEntry.getKey()).append("' was updated. From ")
                         .append(oldValue).append(" to ").append(newValue).append("\n");
                     break;
-                default: throw new RuntimeException();
+                default:
+                    break;
             }
         }
         sb.deleteCharAt(sb.lastIndexOf("\n"));
