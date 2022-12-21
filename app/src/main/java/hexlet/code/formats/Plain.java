@@ -5,25 +5,17 @@ import java.util.Map;
 public class Plain {
     public static String plainFormat(Map<String, Map<String, Object>> fileDifference) throws Exception {
         StringBuilder sb = new StringBuilder();
-
         for (Map.Entry<String, Map<String, Object>> mapEntry : fileDifference.entrySet()) {
-            String valueType = (String) fileDifference.get(mapEntry.getKey()).get("type");
             var newValue = normalize(mapEntry.getValue().get("newValue"));
             var oldValue = normalize(mapEntry.getValue().get("oldValue"));
-            switch (valueType) {
-                case "added":
-                    sb.append("Property '").append(mapEntry.getKey()).append("' was added with value: ")
+            switch ((String) mapEntry.getValue().get("type")) {
+                case "added" -> sb.append("Property '").append(mapEntry.getKey()).append("' was added with value: ")
                         .append(newValue).append("\n");
-                    break;
-                case "removed":
-                    sb.append("Property '").append(mapEntry.getKey()).append("' was removed\n");
-                    break;
-                case "changed":
-                    sb.append("Property '").append(mapEntry.getKey()).append("' was updated. From ")
+                case "removed" -> sb.append("Property '").append(mapEntry.getKey()).append("' was removed\n");
+                case "changed" -> sb.append("Property '").append(mapEntry.getKey()).append("' was updated. From ")
                         .append(oldValue).append(" to ").append(newValue).append("\n");
-                    break;
-                default:
-                    break;
+                default -> {
+                }
             }
         }
         sb.deleteCharAt(sb.lastIndexOf("\n"));
